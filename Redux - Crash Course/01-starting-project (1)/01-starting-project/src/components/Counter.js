@@ -7,16 +7,17 @@ const Counter = () => {
   const dispatch = useDispatch(); 
   // Dispatch an action against my redux Store
 
-  const show = useSelector(state => state.showCounter); //* i can use this multiple time to retrieve different pieces of data from the state
+  const show = useSelector(state => state.counter.showCounter); //* i can use this multiple time to retrieve different pieces of data from the state
 
-  const counter = useSelector(state => state.counter); //* i just get tiny slice from the store
+  const counter = useSelector(state => state.counter.counter); //* i just get tiny slice from the store
   // With useSelector React Redux automatically set up a subscription to the store for this component
   // My component will be UPDATED and will recieve the latest counter automatically whenever that data changes in redux store
   
   // Change to redux store will make my component to re-mount to update changed data
   // If this component was removed from the DOM React Redux will clear this subscription
-
+  
   const incrementHandler = () => {
+    // Po tozi nachin podavam action-a vmesto da pisha ({type: 'increment'}) izpolzvam imeto na metoda direktno
     dispatch(counterActions.increment());
   };
 
